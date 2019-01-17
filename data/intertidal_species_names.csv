@@ -1,0 +1,45 @@
+short,latin,short_latin
+ALARIA,Alaria nana,A. nana
+ACRO,Acrosiphonia coalita,A. coalita
+ANALIPUS,Analipus japonica,A. japonica
+ANTHOE,Anthopleura elegantissima,A. elegantissima
+ANTHOX,Anthopleura xanthogrammica,A. xanthogrammica
+B,Mytilus californianus,M. californianus
+BG,Balanus glandula,B. glandula
+BNUB,Balanus nubilis,B. nubilis
+CAL,Callithamnion pikeanum,C. pikeanum
+CHTH,Chthamalus dalli,C. dalli
+COST,Costaria costata,C. costata
+CV,Corallina spp.,Corallina spp.
+DIAT,Benthic diatoms,Benthic diatoms
+ENDO,Endocladia muricatum,E. muricatum
+ENTMOR,Enteromorpha spp.,Enteromorpha spp.
+FUCUS,Fucus distichus,F. distichus
+HAL,Hallosaccion glandiforme,H. glandiforme
+HALICHOND,Halichondria spp.,Halichondria spp.
+HALICLONA,Haliclona spp.,Haliclona spp.
+HEDO,Saccharina sessilis,S. sessilis
+IRR,Mazzaella spp.,Mazzaella spp.
+LEATHESIA,Leathesia marina,L. marina
+MASTO,Mastocarpus spp.,Mastocarpus spp.
+MICRO,Microcladia borealis,M. borealis
+MT,Mytilus trossulus,M. trossulus
+PETAL,Petalonia fascia,P. fascia
+PETRO,Mastocarpus (Petrocelis),Mastocarpus spp.
+POLY,Filamentous algae,Filamentous algae
+PORPH,Porphyra spp.,Porphyra spp.
+POST,Postelsia palmaeformis,P. palmaeformis
+PP,Pollicipes polymerus,P. polymerus
+PRIONITIS,Prionitis sternbergii,P. sternbergii
+R,Diatoms/rock,Diatoms/rock
+RALF,Crustose algae,Crustose algae
+SC,Semibalanus cariosus,S. cariosus
+SCYTO,Scytosiphon lomentaria,S. lomentaria
+SMC,M. californianus (small),M. californianus
+UGLY,Entodesma navicula,E. navicula
+ULVA,Ulva spp.,Ulva spp.
+X,Missing,Missing
+fila,Filamentous algae,Filamentous algae
+flesha,Fleshy algae,Fleshy algae
+crusts,Fleshy crusts,Fleshy crusts
+ephem,Ephemeral algae,Ephemeral algae

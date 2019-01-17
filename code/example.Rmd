@@ -1,0 +1,130 @@
+
+
+---
+title: ' Reconciling empirical interactions\ with species coexistence'
+output:
+  html_document: default
+  pdf_document: default
+---
+
+*Daniel S. Maynard, J. Timothy Wootton, Carlos A. Serv\'an, Stefano Allesina
+
+
+First, source the R files containing the fitting functions:
+
+```{r echo=F, message=F}
+rm(list=ls())
+library(limSolve)
+source("functions_intertidal.R")
+source("functions_algae.R")
+```
+
+Then, set the seed and the number of species
+
+```{r echo=F, message=F}
+set.seed(10)
+nspp <- 10
+```
+
+Generate a skew-symmetric payoff matrix
+```{r echo=F, message=F}
+P <- matrix(runif(nspp^2),nspp,nspp)
+P <- P-t(P)
+P
+```
+
+And generate a relative abundance vector:
+```{r echo=F, message=F}
+x_equil <- rexp(nspp)
+x_equil <- x_equil/sum(x_equil)
+x_equil
+```
+
+
+First, let's implement quadratic programming to reconcile P with x_equil, assuming each entry is weighted equally:
+```{r echo=F, message=F}
+result_zero_sum <- find_closest_matrix_weighted(P=P, x=x_equil)
+Pfit <- convert_sol_to_matrix(result_zero_sum$X,nspp)
+```
+
+We can view the best-fitting payoff matrix
+```{r echo=F, message=F}
+Pfit
+```
+
+And compare to the original matrix
+```{r echo=F, message=F}
+plot(Pfit~P)
+```
+
+Last, we can double check that it is indeed an exact an exact solution by checking the growth rates at x_equil:
+```{r echo=F, message=F}
+round(Pfit%*%x_equil,12)
+```
+
+Now let's repeat, but this time generate a random matrix of weights, reflecting, for example, different sample sizes for each entry:
+```{r echo=F, message=F}
+weight_mat <- matrix(runif(nspp^2),nspp,nspp)
+result_zero_sum_w <- find_closest_matrix_weighted(P=P, x=x_equil, weight_mat = weight_mat)
+Pfit_w <- convert_sol_to_matrix(result_zero_sum_w$X,nspp)
+```
+
+And we can compare this new weighted payoff matrix to the original best-fitting matrix, and the empirical matrix:
+```{r echo=F, message=F}
+plot(Pfit~Pfit_w)
+plot(P~Pfit_w)
+```
+
+And once again, it's an exact solution:
+```{r echo=F, message=F}
+round(Pfit_w%*%x_equil, 12)
+```
+
+# Lotka Volterra Example
+
+First, generate growth rates (r), interaction matrix (A), and a species abundance vector (x_obs):
+
+```{r echo=F, message=F}
+r <- runif(nspp)
+A <- -matrix(runif(nspp^2), nspp,nspp)
+diag(A) <- diag(A)*2
+x_obs <- runif(nspp)
+```
+
+Instead of using "find_closest_matrix_weighted", as we did for the payoff matrix above, here we using the function "fit_qp_LV". We assign a large tolerance (10,000% deviation possible) allowing each entry to vary as needed to obtain the optimal solution:
+```{r echo=F, message=F}
+result_LV <- fit_qp_LV(A=A,r=r,x_obs=x_obs,tol=1000)
+```
+
+And we convert the solution into matrix and 
+Afit <- t(matrix(result_LV$X[1:nspp^2], nspp,nspp))
+
+rfit <- result_LV$X[(nspp^2+1):(nspp^2+nspp)]
+
+plot(Afit~A)
+plot(rfit~r)
+
+# check to make sure it's a solution
+x_obs*(rfit+Afit%*%x_obs)
+
+
+
+# constrain the entries to be within 100% of the observed
+result_LV_100 <- fit_qp_LV(A=A,r=r,x_obs=x_obs,tol=1)
+					  
+Afit_100 <- t(matrix(result_LV_100$X[1:nspp^2], nspp,nspp))
+
+rfit_100 <- result_LV_100$X[(nspp^2+1):(nspp^2+nspp)]
+
+# compare to the original. Note that it sets a bunch of interactions to be zero
+plot(Afit_100~A)
+
+# growth rate is just scales by a constant
+plot(rfit_100~r)
+
+# compare the fits
+plot(Afit_100~Afit)
+
+# check to make sure it's a solution
+x_obs*(rfit_100+Afit_100%*%x_obs)
+
