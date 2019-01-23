@@ -315,7 +315,7 @@ $(document).ready(function () {
 </section>
 <section id="section-1" class="level2">
 <h2></h2>
-<p>This markdown file provides a brief walk-through of the different functions and methods presented in the manuscript. In this repo there are two main files, <code>fitting_algae.R</code> and <code>fitting_intertidal.R</code> that provide step-by-step code for reporducing the results in the main text, along with a ancillary functions called within these scripts (<code>functions_algae.R</code> and <code>functions_intertidal.R</code>).</p>
+<p>This markdown file provides a brief walk-through of the different functions and methods presented in the manuscript. In this repo there are two main files, <code>fitting_algae.R</code> and <code>fitting_intertidal.R</code> that provide step-by-step code for reproducing the results in the main text, along with a ancillary functions called within these scripts (<code>functions_algae.R</code> and <code>functions_intertidal.R</code>).</p>
 </section>
 <section id="section-2" class="level2">
 <h2></h2>
@@ -325,8 +325,8 @@ $(document).ready(function () {
 <pre class="r"><code>rm(list=ls())
 library(limSolve)
 library(Matrix)
-source(&quot;functions_intertidal.R&quot;)
-source(&quot;functions_algae.R&quot;)</code></pre>
+source(&quot;../code/functions_intertidal.R&quot;)
+source(&quot;../code/functions_algae.R&quot;)</code></pre>
 <p>Then, set the seed and the number of species</p>
 <pre class="r"><code>set.seed(10)
 nspp &lt;- 10</code></pre>

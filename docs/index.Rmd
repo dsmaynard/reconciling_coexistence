@@ -13,7 +13,7 @@ output:
 
 ##
 
-This markdown file provides a brief walk-through of the different functions and methods presented in the manuscript. In this repo there are two main files, ```fitting_algae.R``` and ```fitting_intertidal.R``` that provide step-by-step code for reporducing the results in the main text, along with a ancillary functions called within these scripts (```functions_algae.R``` and ```functions_intertidal.R```). 
+This markdown file provides a brief walk-through of the different functions and methods presented in the manuscript. In this repo there are two main files, ```fitting_algae.R``` and ```fitting_intertidal.R``` that provide step-by-step code for reproducing the results in the main text, along with a ancillary functions called within these scripts (```functions_algae.R``` and ```functions_intertidal.R```). 
 
 ##
 
@@ -25,8 +25,8 @@ First, source the R files containing the fitting functions:
 rm(list=ls())
 library(limSolve)
 library(Matrix)
-source("functions_intertidal.R")
-source("functions_algae.R")
+source("../code/functions_intertidal.R")
+source("../code/functions_algae.R")
 ```
 
 Then, set the seed and the number of species
