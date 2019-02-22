@@ -1,10 +1,12 @@
 
 
 ---
-title: ' Reconciling empirical interactions\ with species coexistence'
+title: ' Reconciling empirical interactions\ and species coexistence'
 output:
-  html_document: default
+  md_document:
+    variant: markdown_github  
   pdf_document: default
+  html_document: default
 ---
 
 ##
