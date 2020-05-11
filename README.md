@@ -1,7 +1,5 @@
 ## Reconciling empirical interactions and species coexistence
 
----
-
 ### _Ecology Letters_ (2019), 22(6):324-334
 
 **Daniel S. Maynard, J. Timothy Wootton, Carlos A. Serván, Stefano Allesina**
